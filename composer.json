@@ -4,7 +4,7 @@
     "keywords": ["yii2", "image", "upload", "behavior", "resize"],
     "homepage": "https://github.com/demisang/yii2-image-uploader#readme",
     "type": "yii2-extension",
-    "license": "GNU",
+    "license": "GPL-2.0-or-later",
     "authors": [
         {
             "name": "Ivan Orlov",
@@ -18,9 +18,9 @@
         "source": "https://github.com/demisang/yii2-image-uploader"
     },
     "require": {
-        "php": ">=5.4.0",
-        "yiisoft/yii2": "*",
-        "yurkinx/yii2-image": "dev-master",
+        "php": ">=7.4",
+        "yiisoft/yii2": "~2.0.45",
+        "yurkinx/yii2-image": "^1.0",
         "demi/cropper": "~1.0"
     },
     "autoload": {

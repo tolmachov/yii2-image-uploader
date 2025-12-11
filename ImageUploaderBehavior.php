@@ -83,7 +83,7 @@ class ImageUploaderBehavior extends Behavior
         if (empty($this->_rootPathAlias)) {
             $savePathParts = explode('/', $this->_savePathAlias);
             // Удаляем последнюю часть
-            unset($savePathParts[count($savePathParts - 1)]);
+            unset($savePathParts[count($savePathParts) - 1]);
             // Объединяем все части обратно
             $this->_rootPathAlias = implode('/', $savePathParts);
         }
@@ -415,14 +415,7 @@ class ImageUploaderBehavior extends Behavior
         $full_path = rtrim($path, '/\\') . $DS . $dir_path;
 
         if (!is_dir($full_path)) {
-            if (YII_DEBUG) {
-                mkdir($full_path, 0777, true);
-            } else {
-                shell_exec('mkdir -m 0777 -p ' . $full_path);
-            }
-            if (!YII_DEBUG && isset($dirs[0])) {
-                shell_exec('chmod -R 0777 ' . $path . $DS . $dirs[0] . $DS . '*');
-            }
+            mkdir($full_path, 0775, true);
         }
 
         $dir_path = str_replace('\\', '/', $dir_path);

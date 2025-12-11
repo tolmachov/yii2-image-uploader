@@ -5,7 +5,7 @@ namespace demi\image;
 use Yii;
 use Closure;
 use yii\base\Action;
-use yii\base\InvalidParamException;
+use yii\base\InvalidArgumentException;
 use yii\db\ActiveRecord;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
@@ -49,7 +49,7 @@ class CropImageAction extends Action
         foreach ($pk as $primaryKey) {
             $pkValue = static::_getRequestParam($primaryKey);
             if ($pkValue === null) {
-                throw new InvalidParamException('You must specify "' . $primaryKey . '" param');
+                throw new InvalidArgumentException('You must specify "' . $primaryKey . '" param');
             }
             $attributes[$primaryKey] = $pkValue;
         }
@@ -60,7 +60,7 @@ class CropImageAction extends Action
         $height = static::_getRequestParam($this->heightParamName);
         $rotate = static::_getRequestParam($this->rotateParamName);
         if ($width === null || $height === null) {
-            throw new InvalidParamException("You must specify '{$this->widthParamName}' and '{$this->heightParamName}' params");
+            throw new InvalidArgumentException("You must specify '{$this->widthParamName}' and '{$this->heightParamName}' params");
         }
 
         $model = $model->find()->where($attributes)->one();

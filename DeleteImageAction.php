@@ -5,7 +5,7 @@ namespace demi\image;
 use Yii;
 use Closure;
 use yii\base\Action;
-use yii\base\InvalidParamException;
+use yii\base\InvalidArgumentException;
 use yii\db\ActiveRecord;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
@@ -39,7 +39,7 @@ class DeleteImageAction extends Action
         foreach ($pk as $primaryKey) {
             $pkValue = static::_getRequestParam($primaryKey);
             if ($pkValue === null) {
-                throw new InvalidParamException('You must specify "' . $primaryKey . '" param');
+                throw new InvalidArgumentException('You must specify "' . $primaryKey . '" param');
             }
             $attributes[$primaryKey] = $pkValue;
         }
